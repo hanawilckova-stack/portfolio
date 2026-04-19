@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hana Wilčková — UI/UX designérka s přesahem do grafiky a brandu. Propojuji strukturované myšlení, kreativitu a AI nástroje." />
+  <title>Hana Wilčková — UI/UX designérka</title>
+  <style>
+/* =============================================
+   FONTS
+   ============================================= */
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('assets/fonts/AbhayaLibre-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('assets/fonts/AbhayaLibre-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('assets/fonts/AbhayaLibre-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Abhaya Libre';
+  src: url('assets/fonts/AbhayaLibre-Bold.ttf') format('truetype');
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('assets/fonts/Inter-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =============================================
+   DESIGN TOKENS
+   ============================================= */
+:root {
+  --color-bg: #F2F1F5;
+  --color-primary: #F2F1F5;
+  --color-accent: #E8583D;
+  --color-text: #1D1D1F;
+  --color-white: #FFFFFF;
+  --color-footer: #1D1D1F;
+  --color-muted: #6E6E73;
+  --color-border: #E0DFE5;
+  --color-card-bg: #FFFFFF;
+
+  --font-serif: 'Abhaya Libre', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 9rem;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --transition: 0.2s ease;
+
+  --max-width: 1160px;
+  --nav-height: 72px;
+}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(2.8rem, 6vw, 5.5rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.5rem); }
+h3 { font-size: clamp(1.4rem, 2.5vw, 2rem); }
+h4 { font-size: 1.2rem; font-weight: 600; }
+
+p {
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+.text-muted {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+/* =============================================
+   LAYOUT
+   ============================================= */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+section {
+  padding: var(--space-2xl) 0;
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+  white-space: nowrap;
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn-accent:hover {
+  background-color: #d44b31;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(232, 88, 61, 0.3);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1.5px solid var(--color-border);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-text);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-text);
+  padding: 0.7rem 0;
+}
+
+.btn-ghost:hover {
+  color: var(--color-accent);
+}
+
+.btn-large {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+.btn-nav {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1.5px solid var(--color-text);
+}
+
+.btn-nav:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(232, 88, 61, 0.3);
+}
+
+/* =============================================
+   NAVIGATION
+   ============================================= */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+}
+
+body {
+  padding-top: var(--nav-height);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.nav__logo {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+  transition: color var(--transition);
+  white-space: nowrap;
+}
+
+.nav__logo:hover {
+  color: var(--color-accent);
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-left: auto;
+  margin-right: var(--space-md);
+}
+
+.nav__link {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-text);
+  transition: color var(--transition);
+}
+
+.nav__link:hover {
+  color: var(--color-accent);
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Burger button */
+.nav__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.nav__burger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav__burger[aria-expanded="true"] .nav__burger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav__burger[aria-expanded="true"] .nav__burger-line:nth-child(2) {
+  opacity: 0;
+}
+.nav__burger[aria-expanded="true"] .nav__burger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile drawer */
+.nav__drawer {
+  display: none;
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  height: calc(100dvh - var(--nav-height));
+  background-color: var(--color-bg);
+  padding: var(--space-md) var(--space-lg);
+  flex-direction: column;
+  gap: 0;
+  z-index: 99;
+  overflow-y: auto;
+}
+
+.nav__drawer.is-open {
+  display: flex;
+}
+
+.nav__drawer-link {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-text);
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: color var(--transition);
+}
+
+.nav__drawer-link:last-child {
+  border-bottom: none;
+}
+
+.nav__drawer-link:hover {
+  color: var(--color-accent);
+}
+
+/* =============================================
+   HERO
+   ============================================= */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: calc(var(--nav-height) + 10vh);
+  padding-bottom: var(--space-2xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+.hero__scroll svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-muted);
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+.hero__intro {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.hero__avatar-wrap {
+  flex-shrink: 0;
+  width: 68px;
+  height: 68px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-text);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-full);
+}
+
+.hero__avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__avatar-placeholder svg {
+  width: 32px;
+  height: 32px;
+  stroke: rgba(255,255,255,0.5);
+}
+
+.hero__intro-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.hero__name {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.hero__role {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.hero__title {
+  font-size: clamp(3.2rem, 7.5vw, 6.5rem);
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin-bottom: var(--space-lg);
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero__title-accent {
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+.hero__subtitle {
+  font-size: 1.05rem;
+  color: var(--color-muted);
+  max-width: 520px;
+  line-height: 1.75;
+  margin-bottom: var(--space-lg);
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* =============================================
+   PROJECTS SECTION
+   ============================================= */
+.projects {
+  padding: var(--space-md) 0 var(--space-2xl);
+  scroll-margin-top: var(--nav-height);
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-lg);
+}
+
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  margin-bottom: var(--space-xs);
+}
+
+.projects__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+/* =============================================
+   PROJECT CARD
+   ============================================= */
+.card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  aspect-ratio: 40 / 23;
+  background-color: var(--color-border);
+}
+
+.card__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card__image img {
+  transform: scale(1.05);
+}
+
+.card__image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  padding: var(--space-sm);
+  text-align: center;
+}
+
+/* Gradient overlay + text */
+.card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.10) 70%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  transition: background 0.4s ease;
+}
+
+.card:hover .card__overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.25) 55%, transparent 100%);
+}
+
+.card__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.card__header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+}
+
+.card__tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--radius-full);
+  padding: 0.3rem 0.75rem;
+}
+
+.card__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1.2;
+}
+
+/* Arrow button */
+.card__arrow {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  background-color: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.card:hover .card__arrow {
+  background-color: var(--color-accent);
+  transform: translate(2px, -2px);
+}
+
+.card__arrow svg {
+  width: 1rem;
+  height: 1rem;
+  stroke: var(--color-white);
+}
+
+/* Placeholder card */
+.card--placeholder {
+  cursor: default;
+  background-color: var(--color-bg);
+  border: 1.5px dashed var(--color-border);
+}
+
+.card--placeholder:hover .card__image img {
+  transform: none;
+}
+
+.card--placeholder .card__overlay {
+  background: none;
+}
+
+.card--placeholder .card__title {
+  color: var(--color-muted);
+}
+
+.card--placeholder .card__tag {
+  color: var(--color-accent);
+}
+
+.card--placeholder .card__image-placeholder {
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 1.5rem;
+}
+
+/* =============================================
+   SERVICES SECTION
+   ============================================= */
+.services {
+  padding: var(--space-2xl) 0;
+}
+
+.services__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.services__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.services__cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.35rem, 1.2vw, 0.6rem);
+  max-width: 680px;
+}
+
+.services__pill {
+  display: inline-block;
+  padding: 0.62em 1.4em;
+  border: 1.5px solid var(--color-text);
+  border-radius: var(--radius-full);
+  font-size: clamp(0.75rem, 3.2vw, 1.067rem);
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.services__pill--accent {
+  background-color: var(--color-text);
+  border-color: var(--color-text);
+  color: var(--color-white);
+}
+
+/* Subtle rotations for scattered feel */
+.services__pill:nth-child(2)  { transform: rotate(-1.5deg); }
+.services__pill:nth-child(4)  { transform: rotate(1deg); }
+.services__pill:nth-child(6)  { transform: rotate(-2deg); }
+.services__pill:nth-child(8)  { transform: rotate(1.5deg); }
+.services__pill:nth-child(10) { transform: rotate(-1deg); }
+.services__pill:nth-child(12) { transform: rotate(2deg); }
+
+/* =============================================
+   ABOUT SECTION
+   ============================================= */
+.about {
+  padding: var(--space-2xl) 0;
+}
+
+.about__inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.about__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: var(--space-xl);
+  align-items: stretch;
+}
+
+.about__photo {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.about__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 42% 0%;
+  transform: scale(1.6) translateY(-15%);
+  transform-origin: 42% 0%;
+}
+
+.about__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.about__title {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.about__quote {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.about__quote em {
+  color: var(--color-accent);
+  font-style: normal;
+}
+
+.about__subtext {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.75;
+}
+
+.about__tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.about__tool {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  color: var(--color-text);
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+  background-color: var(--color-footer);
+  color: var(--color-white);
+}
+
+.footer__main {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  padding: var(--space-2xl) 0;
+}
+
+.footer__bar {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer__bar .container {
+  width: 100%;
+  text-align: center;
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-xl);
+  width: 100%;
+}
+
+.footer__cta-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: var(--space-sm);
+}
+
+.footer__headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--color-white);
+  line-height: 1.2;
+  margin-bottom: var(--space-lg);
+}
+
+.footer__contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--space-lg);
+}
+
+.footer__contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgba(255,255,255,0.75);
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.footer__contact-item:hover {
+  color: var(--color-white);
+}
+
+.footer__contact-item svg {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+
+.footer__copy {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+}
+
+.footer__social {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.footer__social-link {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  transition: color var(--transition);
+}
+
+.footer__social-link:hover {
+  color: var(--color-white);
+}
+
+/* =============================================
+   CASE STUDY PAGES
+   ============================================= */
+
+/* Case Study Hero */
+.case-hero {
+  padding: var(--space-2xl) 0 var(--space-xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.case-hero__breadcrumb {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.case-hero__breadcrumb a {
+  color: var(--color-muted);
+  transition: color var(--transition);
+}
+
+.case-hero__breadcrumb a:hover {
+  color: var(--color-text);
+}
+
+.case-hero__label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.case-hero__title {
+  margin-bottom: var(--space-lg);
+  max-width: 800px;
+}
+
+.case-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+
+.case-hero__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.case-hero__meta-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}
+
+.case-hero__meta-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* Case Study Cover Image */
+.case-cover {
+  padding: var(--space-xl) 0;
+}
+
+.case-cover__image {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 16 / 7;
+  background-color: var(--color-border);
+  position: relative;
+}
+
+.case-cover__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.case-cover__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-white);
+}
+
+/* Case Study Content */
+.case-content {
+  padding: 0 0 var(--space-2xl);
+}
+
+.case-section {
+  padding: var(--space-xl) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.case-section__inner {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.case-section__num {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  padding-top: 0.5rem;
+}
+
+.case-section__num strong {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-serif);
+  color: var(--color-text);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.case-section__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  margin-bottom: var(--space-md);
+}
+
+.case-section__body {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.case-section__body p {
+  margin-bottom: var(--space-sm);
+}
+
+.case-section__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Numbered process steps */
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.process-step {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.process-step__num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  margin-top: 0.1rem;
+}
+
+.process-step__content {
+  flex: 1;
+}
+
+.process-step__title {
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 0.2rem;
+}
+
+.process-step__desc {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+/* Callout / highlight block */
+.callout {
+  background-color: var(--color-white);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.callout p {
+  font-size: 0.975rem;
+  color: var(--color-text);
+}
+
+/* Image placeholder in case study */
+.case-image {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: var(--space-md) 0;
+}
+
+.case-image__placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.85);
+}
+
+.case-image__caption {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  text-align: center;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Back button */
+.case-back {
+  padding: var(--space-xl) 0 var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: color var(--transition), gap var(--transition);
+}
+
+.btn-back:hover {
+  color: var(--color-accent);
+  gap: 0.75rem;
+}
+
+/* =============================================
+   DIVIDERS & UTILS
+   ============================================= */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 900px) {
+  .projects__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .case-section__inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .case-section__num {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-top: 0;
+  }
+
+  .case-section__num strong {
+    display: inline;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --space-xl: 3rem;
+    --space-2xl: 4rem;
+    --space-3xl: 5rem;
+  }
+
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  .nav__inner {
+    padding: 0 var(--space-sm);
+  }
+
+  .hero {
+    padding: var(--space-xl) 0 var(--space-lg);
+  }
+
+  .hero__title {
+    font-size: clamp(2.6rem, 9vw, 4rem);
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .case-hero__meta {
+    gap: var(--space-md);
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2.4rem; }
+  h2 { font-size: 1.8rem; }
+
+  .hero__subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .nav__links {
+    display: none;
+  }
+
+  .nav__burger {
+    display: flex;
+  }
+
+  .nav__inner {
+    padding: 0 var(--space-sm);
+  }
+
+  .nav__drawer {
+    padding: 0 var(--space-sm);
+  }
+
+  .card__overlay {
+    padding: 1.25rem;
+  }
+
+  .card__tag {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.6rem;
+  }
+}
+
+
+/* =============================================
+   ANIMACE
+   ============================================= */
+
+/* Nav blur při scrollu */
+.nav--scrolled {
+  background-color: rgba(242, 241, 245, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+}
+
+/* Fade-in při scrollu */
+.anim-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.anim-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+</style>
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header>
+    <nav class="nav" aria-label="Hlavní navigace">
+      <div class="nav__inner">
+        <a href="index.html" class="nav__logo">Hana Wilčková</a>
+        <div class="nav__links">
+          <a href="#projekty" class="nav__link">Moje práce</a>
+          <a href="#sluzby" class="nav__link">S čím pomůžu</a>
+        </div>
+        <div class="nav__actions">
+          <a href="#kontakt" class="btn btn-accent">Kontakt</a>
+          <button class="nav__burger" aria-label="Otevřít menu" aria-expanded="false">
+            <span class="nav__burger-line"></span>
+            <span class="nav__burger-line"></span>
+            <span class="nav__burger-line"></span>
+          </button>
+        </div>
+      </div>
+      <div class="nav__drawer" id="navDrawer">
+        <a href="#projekty" class="nav__drawer-link">Moje práce</a>
+        <a href="#sluzby" class="nav__drawer-link">S čím pomůžu</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <div class="container">
+
+
+        <!-- Velký display nadpis -->
+        <h1 class="hero__title">
+          Wilčková Hana,<br>
+          <span class="hero__title-accent">portfolio</span>
+        </h1>
+
+
+      </div>
+
+
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section class="projects" id="projekty">
+      <div class="container">
+
+        <div class="projects__grid">
+
+          <!-- Card 1 – Carglass -->
+          <a href="carglass.html" class="card" aria-label="Přejít na case study Carglass">
+            <div class="card__image">
+              <img
+                src="assets/images/carglass-preview.png"
+                alt="Náhled projektu Carglass"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="card__image-placeholder" style="display:none; background: linear-gradient(135deg, #2C2C54 0%, #474787 100%);">
+                Carglass · preview image
+              </div>
+            </div>
+            <div class="card__overlay">
+              <div class="card__header">
+                <div class="card__header-left">
+                  <h3 class="card__title">Redesign webu Carglass</h3>
+                  <div class="card__tags">
+                    <span class="card__tag">Agentura</span>
+                    <span class="card__tag">UX/UI design</span>
+                    <span class="card__tag">8 měsíců</span>
+                  </div>
+                </div>
+                <div class="card__arrow">
+                  <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 2 – Videolektor -->
+          <a href="videolektor.html" class="card" aria-label="Přejít na case study Videolektor">
+            <div class="card__image">
+              <img
+                src="assets/images/videolektor-preview.png"
+                alt="Náhled projektu Videolektor"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <div class="card__image-placeholder" style="display:none; background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);">
+                Videolektor · preview image
+              </div>
+            </div>
+            <div class="card__overlay">
+              <div class="card__header">
+                <div class="card__header-left">
+                  <h3 class="card__title">Redesign uživatelského profilu</h3>
+                  <div class="card__tags">
+                    <span class="card__tag">Freelance</span>
+                    <span class="card__tag">UX design</span>
+                  </div>
+                </div>
+                <div class="card__arrow">
+                  <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+                </div>
+              </div>
+            </div>
+          </a>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SERVICES ===================== -->
+    <section class="services" id="sluzby">
+      <div class="container">
+
+        <div class="services__inner">
+
+          <h2 class="services__heading">S čím pomůžu</h2>
+
+          <div class="services__cloud">
+            <span class="services__pill">Bannery</span>
+            <span class="services__pill">Tiskoviny</span>
+            <span class="services__pill">Prototypy</span>
+            <span class="services__pill services__pill--accent">UX design</span>
+            <span class="services__pill services__pill--accent">Webdesign</span>
+            <span class="services__pill services__pill--accent">Sitemap & architektura</span>
+            <span class="services__pill">Graphic Design</span>
+            <span class="services__pill">Marketingové materiály</span>
+            <span class="services__pill">Brand & Identita</span>
+            <span class="services__pill">Wireframes</span>
+            <span class="services__pill">Barvy & typografie</span>
+            <span class="services__pill">Brand manuál</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="about" id="o-mne">
+      <div class="container">
+        <div class="about__inner">
+
+          <!-- Foto -->
+          <div class="about__photo">
+            <img
+              src="assets/images/foto-hana.jpg"
+              alt="Hana Wilčková"
+              onerror="this.style.display='none';"
+            />
+          </div>
+
+          <!-- Text -->
+          <div class="about__content">
+            <h2 class="about__title">Pár slov o mně</h2>
+            <p class="about__subtext">
+              Designu se věnuju 3,5 roku a za tu dobu jsem prošla dvěma softwarovými
+              agenturami, kde jsem pracovala na reálných projektech. Navrhuji celý proces
+              od struktury a prvních konceptů přes prototypy až po finální design.
+              Zakládám si na otevřené komunikaci a dodržování termínů.
+            </p>
+            <div class="about__tools-list">
+              <span class="about__tool">Figma</span>
+              <span class="about__tool">Affinity</span>
+              <span class="about__tool">Claude Code</span>
+              <span class="about__tool">Clarity</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" id="kontakt">
+    <div class="footer__main">
+      <div class="container">
+        <div class="footer__inner">
+          <div>
+            <h2 class="footer__headline">Kontakt</h2>
+            <div class="footer__contacts">
+              <a href="tel:+420777885905" class="footer__contact-item">
+                <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20.9993 16.4712V19.7831C21.0005 20.0906 20.9403 20.3949 20.8225 20.6766C20.7047 20.9583 20.5319 21.2112 20.3152 21.419C20.0985 21.6269 19.8427 21.7851 19.5642 21.8836C19.2856 21.9821 18.9904 22.0187 18.6975 21.991C15.4484 21.6219 12.3275 20.4611 9.58535 18.6019C7.03418 16.9069 4.87123 14.6455 3.2501 11.9781C1.46565 9.09809 0.355154 5.81909 0.00857022 2.40674C-0.0178155 2.10146 0.0168851 1.79378 0.110463 1.50329C0.20404 1.2128 0.354444 0.94586 0.552098 0.719472C0.749753 0.493085 0.990327 0.312208 1.2585 0.188357C1.52668 0.0645062 1.81659 0.000395695 2.10976 0.000107032H5.27738C5.78981 -0.00516598 6.28658 0.184556 6.67511 0.533909C7.06364 0.883262 7.31741 1.36841 7.38913 1.89892C7.52283 2.9588 7.77078 3.99946 8.12824 5.00106C8.2703 5.39619 8.30105 5.82562 8.21684 6.23847C8.13263 6.65131 7.93699 7.03026 7.6531 7.33042L6.31214 8.73245C7.81524 11.4963 10.004 13.7847 12.6474 15.3562L13.9883 13.9542C14.2754 13.6574 14.6379 13.4528 15.0327 13.3648C15.4276 13.2767 15.8383 13.3089 16.2162 13.4574C17.1742 13.8312 18.1695 14.0904 19.1832 14.2302C19.6962 14.3058 20.1646 14.576 20.4994 14.9892C20.8343 15.4024 21.0122 15.9298 20.9993 16.4712Z" fill="currentColor"/></svg>
+                +420 777 885 905
+              </a>
+              <a href="mailto:hana.wilckova@gmail.com" class="footer__contact-item">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M11.0007 14.6663C13.0257 14.6663 14.6673 13.0247 14.6673 10.9997C14.6673 8.97463 13.0257 7.33301 11.0007 7.33301C8.97561 7.33301 7.33398 8.97463 7.33398 10.9997C7.33398 13.0247 8.97561 14.6663 11.0007 14.6663Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.6673 7.33342V11.9167C14.6673 12.6461 14.9571 13.3456 15.4728 13.8613C15.9885 14.377 16.688 14.6667 17.4173 14.6667C18.1467 14.6667 18.8461 14.377 19.3619 13.8613C19.8776 13.3456 20.1673 12.6461 20.1673 11.9167V11.0001C20.1672 8.93119 19.4672 6.92319 18.1812 5.30257C16.8951 3.68195 15.0987 2.54404 13.0839 2.07385C11.0692 1.60367 8.9546 1.82887 7.08406 2.71284C5.21352 3.5968 3.69702 5.08754 2.78115 6.94266C1.86527 8.79778 1.60388 10.9082 2.03948 12.9307C2.47508 14.9532 3.58205 16.7689 5.1804 18.0825C6.77875 19.3961 8.77447 20.1304 10.8431 20.166C12.9116 20.2015 14.9314 19.5363 16.574 18.2784" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                hana.wilckova@gmail.com
+              </a>
+            </div>
+            <a href="https://www.linkedin.com/in/hana-wil%C4%8Dkov%C3%A1-b87b41229/" target="_blank" rel="noopener" class="btn btn-accent">
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <div class="container">
+        <p class="footer__copy">© 2026 Designed and developed by Hana Wilčková</p>
+      </div>
+    </div>
+  </footer>
+
+
+<script>
+  /* ── 1. NAV BLUR při scrollu ── */
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('nav--scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── 2. BURGER MENU ── */
+  const navBurger = document.querySelector('.nav__burger');
+  const navDrawer = document.getElementById('navDrawer');
+  if (navBurger && navDrawer) {
+    navBurger.addEventListener('click', () => {
+      const isOpen = navDrawer.classList.toggle('is-open');
+      navBurger.setAttribute('aria-expanded', String(isOpen));
+    });
+    navDrawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navDrawer.classList.remove('is-open');
+        navBurger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* ── 2. SCROLL FADE-IN (IntersectionObserver) ── */
+  const fadeEls = document.querySelectorAll(
+    '.hero__intro, .hero__title, .hero__actions, .card, .about__photo, .about__content, .footer__headline, .footer__contacts, .btn-footer'
+  );
+  fadeEls.forEach((el, i) => {
+    el.classList.add('anim-hidden');
+    // karty se zpožďují postupně
+    if (el.classList.contains('card')) {
+      el.style.transitionDelay = (i % 3) * 0.08 + 's';
+    }
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('anim-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  fadeEls.forEach(el => observer.observe(el));
+
+  /* ── 3. HERO stagger při načtení ── */
+  const heroEls = [
+    document.querySelector('.hero__intro'),
+    document.querySelector('.hero__title'),
+    document.querySelector('.hero__actions'),
+  ];
+  heroEls.forEach((el, i) => {
+    if (!el) return;
+    el.style.animationDelay = (i * 0.15) + 's';
+  });
+</script>
+
+</body>
+</html>
