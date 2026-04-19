@@ -1,0 +1,57 @@
+Redesign uživatelského profilu Videolektor.cz
+
+Klient: Videolektor.cz
+Role: UX Designer
+Nástroj: Figma, Claude Code
+Typ: Freelance
+
+────────────────────────────────────────────────────────
+
+01 — Kontext & problém
+
+Profil jako pouhý formulář
+
+Videolektor.cz je online vzdělávací platforma pro účetní fungující od roku 2013 s více než 2 000 předplatiteli. Redesign uživatelského profilu je jedním z větších projektů, které jsem pro ně realizovala.
+
+Původní profil byl v podstatě jen formulář. Chyběl přehled aktivity uživatelů, sekce byly oddělené a nepropojené. Uživateli se nikam neukládal jeho oblíbený obsah: rozkoukaná školení, absolvované kurzy ani položené dotazy. Neexistoval žádný dashboard, kde by uživatel hned na jednom místě našel svou aktivitu.
+
+────────────────────────────────────────────────────────
+
+02 — Můj proces
+
+Od průzkumu po návrh stavů
+
+1. Zmapování stávajícího stavu
+Vlastní průchod platformou, poznámky k problematickým místům a chybějícím prvkům.
+
+2. Definice rolí a jejich kombinací
+Tři hlavní role zákazníků (běžný uživatel, lektor školení, odborný poradce) a jejich možné kombinace.
+
+3. Návrh stavů profilu
+Tři různé pohledy: co vidí uživatel sám, co vidí ostatní, co vidí návštěvník bez předplatného.
+
+────────────────────────────────────────────────────────
+
+03 — Výzva
+
+Tři role uživatele, devět kombinací
+
+Největší výzva bylo zvládnout kombinace rolí. Platforma má tři hlavní role: uživatel, lektor a poradce a každá se může překrývat. Jeden člověk může být zároveň uživatel i lektor, nebo lektor i poradce.
+
+Zároveň jsem řešila tři různé pohledy na profil: co vidí uživatel sám, co vidí ostatní přihlášení uživatelé a co vidí návštěvník bez předplatného. Každý pohled vyžadoval jiné zobrazení dat a jiný přístup.
+
+────────────────────────────────────────────────────────
+
+04 — Výsledek
+
+Profil jako dashboard aktivity
+
+Nový profil zobrazuje aktivitu na platformě: rozkoukaná školení, oblíbené položky, položené dotazy, absolvované testy, osvědčení. Přidala jsem možnost rychlého přepnutí do editace a celkově hravější vizuál.
+
+Prototyp je ve finální podobě a čeká na spuštění.
+
+────────────────────────────────────────────────────────
+
+05 — Zpětný pohled
+
+Projekt ještě nebyl spuštěn — tuto sekci doplním po spuštění a po prvních datech z ostrého provozu.

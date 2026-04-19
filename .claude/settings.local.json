@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp \"/Users/hanawilckova/Downloads/carglass priview.png\" /Users/hanawilckova/portfolio/assets/images/carglass-preview.jpg)",
+      "Bash(cp \"/Users/hanawilckova/Downloads/videolektor priview.png\" /Users/hanawilckova/portfolio/assets/images/videolektor-preview.jpg)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/hanawilckova/portfolio/assets/images/foto-hana.jpg)",
+      "Bash(sips -Z 1200 --setProperty formatOptions 80 /Users/hanawilckova/portfolio/assets/images/foto-hana.jpg)",
+      "Bash(sips -Z 2000 /Users/hanawilckova/portfolio/assets/images/carglass-cover.png)",
+      "Bash(sips -Z 2000 /Users/hanawilckova/portfolio/assets/images/videolektor-cover.png)",
+      "Bash(sips -Z 1400 /Users/hanawilckova/portfolio/assets/images/carglass-preview.png)",
+      "Bash(sips -Z 1400 /Users/hanawilckova/portfolio/assets/images/videolektor-preview.png)"
+    ]
+  }
+}
